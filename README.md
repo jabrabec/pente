@@ -77,6 +77,7 @@ if (
 ):
     board[x][y+1] == ‘ .’
     board[x][y+2] == ‘ .’
+    board[x][y+3] == ‘ O’
     capture_count += 2
 ```
   
