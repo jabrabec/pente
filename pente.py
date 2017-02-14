@@ -171,7 +171,7 @@ def check_for_five(board, count=0, row=1, col=1):
             return True
 
     # check diagonally-up:
-    # left-most postion can't index before row 5
+    # left-most postion can't index before row 5 or after col 11
     if (board[row][col] == board[row-1][col+1] and row > 4 and col < 12):
         # print 'row: %s, col %s, count %s' % (row, col, count)
         if check_for_five(board, count, row-1, col+1):
