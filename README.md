@@ -56,9 +56,9 @@ True
   
 `check_for_winner` will succeed quickly if there are matches originating from the (1, 1) coordinate. However, if there are not, the function becomes stuck in an extremely slow for loop (it does not abort from max recursion depth), before aborting from a list index out of range error. The `check_for_five` function can be manually called for other originating coordinates by setting the row & column values passed to the function instead of accepting their defaults. But, since the `check_for_winner` function was originally written as a nested for-loop to examine all possible starting coordinates in the game board, as-is it will not function correctly in most cases.  
 
-Full repo:
+Second Release
 ------  
-https://github.com/jabrabec/pente  
+https://github.com/jabrabec/pente/releases/tag/second_release  
 
 Because I was unsatisfied with these results, I continued to work on this program beyond the 4-hour limit, but I wanted to make that distinction very clear both here and with the tagged releases in the repo. The following changes represent about 2 additional hours of work on this program.  
 
@@ -81,4 +81,4 @@ if (
 ```
   
 
-With another as-yet-named function getting called once a player placed a piece in order to check the `capture_count` and end the game if that reached 10 or more. The `computer_play` function would also be modified to check for opportunities to capture the player’s pieces, with a random (or weighted?) determination of whether to capture or place another random piece on the board.
+With another as-yet-named function getting called once a player placed a piece in order to check the `capture_count` and end the game if that reached 10 or more. The `computer_play` function would also be modified to check for opportunities to capture the player’s pieces, with a random (or semi-random, weighted?) determination of whether to capture or place another random piece on the board.
