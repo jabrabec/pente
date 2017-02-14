@@ -6,7 +6,7 @@ import random
 
 
 def make_board():
-    '''Set up an "empty" 15x15 grid with headers'''
+    '''Set up an "empty" 15x15 grid with row and column headers'''
 
     # Define blank list
     board = []
@@ -26,6 +26,9 @@ def make_board():
             # Assign x to each row
             board[row].append('.')
 
+    # Add a space to board at index [i][j] where value has only one character,
+    # for improved visual spacing when printed. Will apply to both numeric
+    # header values as well as individual cells marked by "."
     for i in range(len(board)):
         for j in range(len(board[i])):
             if len(board[i][j]) < 2:
@@ -55,6 +58,7 @@ def player_play(board, played=None):
         return
 
     # initialize played as an empty set if nothing passed to func for this var
+    # (i.e. if player goes first)
     if not played:
         played = set()
 
@@ -108,6 +112,7 @@ def computer_play(board, played=None):
         return
 
     # initialize played as an empty set if nothing passed to func for this var
+    # (i.e. if computer goes first)
     if not played:
         played = set()
 
@@ -132,7 +137,7 @@ def computer_play(board, played=None):
 
 
 def check_for_five(board, count=0, row=1, col=1):
-    '''Iterate over  board positions to check for wins'''
+    '''Iterate over board positions to check for wins'''
 
     if board[row][col] != ' .':
         count += 1
