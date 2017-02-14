@@ -131,6 +131,63 @@ def computer_play(board, played=None):
         computer_play(board, played)
 
 
+def check_for_five(board, count=0, row=1, col=1):
+    '''Iterate over  board positions to check for wins'''
+
+    if board[row][col] != ' .':
+        count += 1
+    #     print 'not a ., count is %s' % (count)
+    # print 'value at row %s, col %s is %s, count is %s' % (
+    #     row, col, board[row][col], count)
+
+    # print 'iteration #: %s ' % (count)
+    if count == 5:
+        return True
+
+    # check right:
+    # left-most postion can't index past col. 11
+    if board[row][col] == board[row][col+1] and col < 12:
+        # print 'row: %s, col %s, count %s' % (row, col, count)
+        if check_for_five(board, count, row, col+1):
+            return True
+
+    # check down:
+    # top-most postion can't index past row 11
+    if board[row][col] == board[row+1][col] and row < 12:
+        # print 'row: %s, col %s, count %s' % (row, col, count)
+        if check_for_five(board, count, row+1, col):
+            return True
+
+    # check diagonally-down:
+    # top-most postion can't index past row 11 and col 11
+    if (board[row][col] == board[row+1][col+1] and row < 12 and col < 12):
+        # print 'row: %s, col %s, count %s' % (row, col, count)
+        if check_for_five(board, count, row+1, col+1):
+            return True
+
+    # check diagonally-up:
+    # left-most postion can't index before row 5
+    if (board[row][col] == board[row-1][col+1] and row > 4 and col < 12):
+        # print 'row: %s, col %s, count %s' % (row, col, count)
+        if check_for_five(board, count, row-1, col+1):
+            return True
+
+    return False
+
+
+def check_for_winner(board):
+    """Can word be found in board?"""
+
+    count = 0
+    for row in range(1, 16):
+        print 'checking row %s' % (row)
+        for col in range(1, 16):
+            print '\tchecking col %s' % (col)
+            if check_for_five(board, count, row, col):
+                return True
+    return False
+
+
 def start_game():
     '''Initiates new game'''
 
